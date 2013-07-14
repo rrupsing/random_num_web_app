@@ -46,6 +46,8 @@ def number_profile(request):
 
     # proper way to do this is to detect the HTTP DELETE command and process, however I didn't have time to integrate the django rest library
     # so instead I assume if they are posting with a random_number_profile_id then it is a DELETE command
+    if random_number_profile_id is None and (range_start is None or range_end is None):
+        return HttpResponseBadRequest("Must specify either a random_number_profile_id or start and end range parameter")
 
     random_api_manager = RandomManagerAPI()
 
