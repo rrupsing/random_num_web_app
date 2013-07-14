@@ -1,5 +1,6 @@
 # Django settings for django_server project.
 import djcelery
+from datetime import timedelta
 djcelery.setup_loader()
 
 DEBUG = True
@@ -153,3 +154,11 @@ LOGGING = {
 
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
+CELERYBEAT_SCHEDULE = {
+    'add-every-1-hour': {
+        'task': 'tasks.clean',
+        'schedule': timedelta(hours=1),
+    },
+    }
+
+CELERY_TIMEZONE = 'UTC'
