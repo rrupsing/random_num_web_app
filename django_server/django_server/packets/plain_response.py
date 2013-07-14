@@ -1,3 +1,5 @@
+import django
+
 class HttpResponsePlain(django.http.HttpResponse):
 
     def serialize(self):            return self.content
