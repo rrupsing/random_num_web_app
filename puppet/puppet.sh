@@ -1,5 +1,5 @@
 #!/bin/bash
-MOB="mobile_server"
+MOB="random_num_web_app"
 DJ="django_server"
 PUPPET="puppet-3.2.2"
 

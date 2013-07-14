@@ -31,8 +31,8 @@ apache::vhost { 'django_server':
        vhost_name => '*',
        logroot => '/var/log/apache2/django',
        setenv => 'DJANGO_SETTINGS_MODULE django_server.settings',
-       docroot => '/var/www/mobile_server/django_server/django_server',
-       custom_fragment => 'WSGIScriptAlias / /var/www/mobile_server/django_server/django_server/django_server.wsgi'
+       docroot => '/var/www/random_num_web_app/django_server/django_server',
+       custom_fragment => 'WSGIScriptAlias / /var/www/random_num_web_app/django_server/django_server/django_server.wsgi'
 }
 
 class {'apache::mod::python': }
