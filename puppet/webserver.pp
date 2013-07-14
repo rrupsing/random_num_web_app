@@ -3,7 +3,11 @@ package { 'python2.7': ensure => installed; }
 package { 'python-dev': ensure => installed; }
 package { 'python-setuptools': ensure => installed; }
 package { 'python-pip': ensure => installed; }
-package { 'django': ensure => '1.5.1', provider => 'pip'; }
+package {
+    'django': ensure => '1.5.1', provider => 'pip';
+ 	"django-celery":
+ 	    provider => pip;
+ 	    }
 package { 'phpmyadmin': ensure => installed; }
 package { 'libmysqlclient-dev' : ensure => installed; }
 package { 'MySQL-python': ensure => "1.2.3", require => Package['libmysqlclient-dev'], provider => pip; }
@@ -38,3 +42,7 @@ apache::vhost { 'django_server':
 class {'apache::mod::python': }
 class {'apache::mod::wsgi': }
 
+class { 'rabbitmq::server':
+  port              => '5672',
+  delete_guest_user => true,
+}

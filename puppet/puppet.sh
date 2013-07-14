@@ -28,6 +28,7 @@ sudo puppet module install puppetlabs/mysql
 sudo puppet module install puppetlabs/stdlib 
 sudo puppet module install puppetlabs/firewall
 sudo puppet module install ripienaar/concat
+sudo puppet module install puppetlabs/rabbitmq
 sudo git clone https://github.com/puppetlabs/puppetlabs-apache.git apache
 
 cd /home/ubuntu/${MOB}/puppet
@@ -37,3 +38,7 @@ sudo python manage.py syncdb
 
 # restart the apache server
 sudo /etc/init.d/apache2 restart
+
+sudo rabbitmqctl add_user guest guest
+sudo rabbitmqctl set_user_tags guest administrator
+sudo rabbitmqctl set_permissions -p / guest ".*" ".*" ".*"
