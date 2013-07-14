@@ -35,13 +35,13 @@ def number_profile(request):
     range_end = None
     seed = None
 
-    if request.POST.has_key('random_number_profile_id') and isinstance(request.GET.has_key('random_number_profile_id'), int):
+    if request.POST.has_key('random_number_profile_id') and isinstance(request.POST.has_key('random_number_profile_id'), int):
         random_number_profile_id = int(request.POST['random_number_profile_id'])
-    if request.POST.has_key('range_start') and isinstance(request.GET.has_key('range_start'), int):
+    if request.POST.has_key('range_start') and isinstance(request.POST.has_key('range_start'), int):
         range_start = int(request.POST['range_start'])
-    if request.POST.has_key('range_end') and isinstance(request.GET.has_key('range_end'), int):
+    if request.POST.has_key('range_end') and isinstance(request.POST.has_key('range_end'), int):
         range_end = int(request.POST['range_end'])
-    if request.POST.has_key('seed') and isinstance(request.GET.has_key('seed'), int):
+    if request.POST.has_key('seed') and isinstance(request.POST.has_key('seed'), int):
         seed = int(request.POST['seed'])
 
     # proper way to do this is to detect the HTTP DELETE command and process, however I didn't have time to integrate the django rest library
