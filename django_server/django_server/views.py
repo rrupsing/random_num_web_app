@@ -11,22 +11,16 @@ def generate_random(request):
     seed = None
 
     if request.GET.has_key('random_number_profile_id'):
-        random_number_profile_id = request.GET['random_number_profile_id']
+        random_number_profile_id = int(request.GET['random_number_profile_id'])
     if request.GET.has_key('range_start'):
-        range_start = request.GET['range_start']
+        range_start = int(request.GET['range_start'])
     if request.GET.has_key('range_end'):
-        range_end = request.GET['range_end']
+        range_end = int(request.GET['range_end'])
     if request.GET.has_key('seed'):
-        seed = request.GET['seed']
+        seed = int(request.GET['seed'])
 
     if random_number_profile_id is None and (range_start is None or range_end is None):
         return HttpResponseBadRequest("Must specify either a random_number_profile_id or start and end range parameter")
-
-    # sanity check values
-    for param in [random_number_profile_id, range_start, range_end, seed]:
-        if param is not None:
-            if not isinstance(param, int):
-                return HttpResponseBadRequest("All parameters must be integers")
 
     random_api_manager = RandomManagerAPI()
 
@@ -42,19 +36,13 @@ def number_profile(request):
     seed = None
 
     if request.POST.has_key('random_number_profile_id'):
-        random_number_profile_id = request.POST['random_number_profile_id']
+        random_number_profile_id = int(request.POST['random_number_profile_id'])
     if request.POST.has_key('range_start'):
-        range_start = request.POST['range_start']
+        range_start = int(request.POST['range_start'])
     if request.POST.has_key('range_end'):
-        range_end = request.POST['range_end']
+        range_end = int(request.POST['range_end'])
     if request.POST.has_key('seed'):
-        seed = request.POST['seed']
-
-    # sanity check values
-    for param in [random_number_profile_id, range_start, range_end, seed]:
-        if param is not None:
-            if not isinstance(param, int):
-                return HttpResponseBadRequest("All parameters must be integers")
+        seed = int(request.POST['seed'])
 
     # proper way to do this is to detect the HTTP DELETE command and process, however I didn't have time to integrate the django rest library
     # so instead I assume if they are posting with a random_number_profile_id then it is a DELETE command
